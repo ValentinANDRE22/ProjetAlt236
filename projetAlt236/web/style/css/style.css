@@ -37,7 +37,7 @@ body{
 }
 
 .sources{
-		border-left: 5px solid #ef0cbf;
+		border-right: 5px solid #ef0cbf;
 		   border-radius: 3px;
 
 		   box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
@@ -50,4 +50,13 @@ body{
 	        padding: 10px;
     background-color: #c4c4c4;
     /* border-radius: 4px; */
+    position: relative;
+    height: 250px;
+    margin-top: .5rem;
+    overflow: auto;
+}
+
+.head-source{
+	text-align: center;
+	border-left: 5px solid #ef0cbf;
 }

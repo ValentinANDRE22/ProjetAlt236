@@ -28,7 +28,7 @@
 			<br>
 
 			<div class="sources">
-					<!-- NavBar pour le scrollspy -->
+				<!-- NavBar pour le scrollspy -->
 				<nav id="navbar-example2" class="navbar navbar-dark bg-dark">
 					<a class="navbar-brand" href="#">Sources</a>
 					<ul class="nav nav-pills">
@@ -40,21 +40,93 @@
 						</li>
 					</ul>
 				</nav>
-							<!-- Affichage des sources dans un scrollspy -->
+				<!-- Affichage des sources dans un scrollspy -->
 				<div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="source-scroll">
 					<h4 id="musiques">Musiques</h4>
-					<p>...</p>
-					<h4 id="images">Images</h4>
-					<p>...</p>
-				
-				</div>
-				
+	<!-- 				<div class="row">
+					<div class="col-4 head-source">Titre</div>
+						<div class="col-3 head-source">Auteur</div>
+						<div class="col-4 head-source">Lien</div>
+						<div class="col-1 head-source">Timer</div>
+					</div>
+					<div class="row">
+						<div class="col-4">Titre</div>
+						<div class="col-3">Auteur</div>
+						<div class="col-4">Lien</div>
+						<div class="col-1">Timer</div>
+					</div>
+				-->
+				<table class="table table-striped head-source">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">First</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4 id="images">Images</h4>
+							<table class="table table-striped head-source">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">First</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+
 			</div>
-
-
+			
 		</div>
+
 
 	</div>
 
+</div>
 
-	{% endblock %}
+
+{% endblock %}
