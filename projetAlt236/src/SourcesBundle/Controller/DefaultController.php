@@ -14,4 +14,12 @@ class DefaultController extends Controller
     {
         return $this->render('SourcesBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/Sources")
+     */
+    public function sourcesAction()
+    {
+        return $this->render('SourcesBundle:Default:sources.html.twig');
+    }
 }

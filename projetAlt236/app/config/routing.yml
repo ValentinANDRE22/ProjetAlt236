@@ -1,8 +1,12 @@
-sources:
-    resource: "@SourcesBundle/Controller/"
-    type:     annotation
-    prefix:   /
+# sources:
+#     resource: "@SourcesBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+sources:
+    resource: "@SourcesBundle/Resources/config/routing.yml"
+
+
+# app:
+#     resource: '@AppBundle/Controller/'
+#     type: annotation

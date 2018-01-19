@@ -1,5 +1,7 @@
 body{
-	background:url('../../images/WhatIsAlt236.jpg');
+/*	background:url('../../images/WhatIsAlt236.jpg');*/
+	background:url('../../images/CuriosityCabinet.jpg');
+/*	background:url('../../images/TheMeeting.jpg');*/
 	    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
@@ -32,4 +34,20 @@ body{
 			left				: 0;
 			right				: 0;
 			height				: 35px;
+}
+
+.sources{
+		border-left: 5px solid #ef0cbf;
+		   border-radius: 3px;
+
+		   box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
+-moz-box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
+-webkit-box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
+}
+
+.source-scroll{
+
+	        padding: 10px;
+    background-color: #c4c4c4;
+    /* border-radius: 4px; */
 }
