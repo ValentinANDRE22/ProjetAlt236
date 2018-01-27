@@ -1,0 +1,11 @@
+Sources_index:
+    path:     /
+    defaults: { _controller: "SourcesBundle:Default:index" }
+
+Sources_sources:
+    path:     /sources
+    defaults: { _controller: "SourcesBundle:Sources:index" }
+
+Sources_videos:
+    path:     /videos
+    defaults: { _controller: "SourcesBundle:Videos:index" }

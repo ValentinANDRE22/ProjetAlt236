@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="container" style="margin-bottom: 45px;">
+		<br>
+	
+			<div class="wrapper form-signin content" >
+
+				<h3 class="form-signin-heading">Connexion</h3>
+				<div class="ligne-magenta"></div>
+{# 				<hr class="colorgraph"> #}<br>
+
+
+				{{ form_start(form)}}
+
+				{{ form_errors(form) }}
+				{{ form_widget(form.username, { attr : { name : '_username' , class: 'form-control', placeholder: 'Username'}})  }}
+				{{ form_widget(form.password, { attr : { name : '_password' , class: 'form-control', placeholder: 'Password'}})  }}
+				<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  	
+				{{ form_end(form)}}    		  
+
+			</div>
+
+		</div>
+
+
+{% endblock %}

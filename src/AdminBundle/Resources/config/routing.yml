@@ -1,0 +1,15 @@
+Admin_index:
+    path:     /
+    defaults: { _controller: "AdminBundle:Default:index" }
+    
+Admin_register:
+    path:     /register
+    defaults: { _controller: "AdminBundle:User:register" }
+    
+Admin_video_board:
+    path:     /videoboard
+    defaults: { _controller: "AdminBundle:Default:videoBoard" }
+    
+
+
+    

@@ -1,7 +1,0 @@
-Sources_index:
-    path:     /
-    defaults: { _controller: "SourcesBundle:Default:index" }
-
-Sources_sources:
-    path:     /Sources
-    defaults: { _controller: "SourcesBundle:Default:sources" }
