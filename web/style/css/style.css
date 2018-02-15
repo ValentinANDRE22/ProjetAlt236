@@ -155,3 +155,31 @@ input[type="password"] {
 	        padding: 1em;
     margin: .5em 0;
 }
+
+.card-title-me {
+	height: 75px;
+	overflow: hidden;
+}
+
+.btn-miniature {
+	justify-content: space-around;
+	display: flex ;
+}
+
+.btn-form {
+    justify-content: space-around;
+	display: flex ;
+        width: 100%;
+        height: 100%;
+}
+
+.btn-suppr-image {
+	    border: 0;
+}
+
+.col-formulaire-add-image {
+
+	padding-left: 0;
+	padding-right: 0;
+
+}

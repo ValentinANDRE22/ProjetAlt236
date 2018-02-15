@@ -7,9 +7,13 @@ Admin_register:
     defaults: { _controller: "AdminBundle:User:register" }
     
 Admin_video_board:
-    path:     /videoboard
-    defaults: { _controller: "AdminBundle:Default:videoBoard" }
+    path:     /videoboard/{id}
+    defaults: { _controller: "AdminBundle:Video:videoBoard" }
     
+Admin_musique_board:
+    path:     /musiqueboard/{id}
+    defaults: { _controller: "AdminBundle:Musique:musiqueBoard" }
 
-
-    
+Admin_suppr_image:
+    path:   /image/remove/{id}
+    defaults: { _controller: "AdminBundle:Video:deleteImage" }

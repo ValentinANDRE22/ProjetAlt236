@@ -62,6 +62,11 @@ class Video
      * @ORM\Column(name="visible", type="boolean")
      */
     private $visible;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="video")
+     */
+    private $image;
 
     /**
      * @var \DateTime
@@ -310,5 +315,45 @@ class Video
     {
         return $this->isAlive;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add image
+     *
+     * @param \AdminBundle\Entity\Image $image
+     *
+     * @return Video
+     */
+    public function addImage(\AdminBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AdminBundle\Entity\Image $image
+     */
+    public function removeImage(\AdminBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+}

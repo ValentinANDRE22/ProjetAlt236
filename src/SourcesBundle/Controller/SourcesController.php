@@ -15,7 +15,7 @@ class SourcesController extends Controller
     {
         $user = "";
         $user = $this->getUser();
-        dump($user->getRoles());
+        //dump($user->getRoles());
         
         return $this->render('SourcesBundle:Default:sources.html.twig', array(
             'user'=> $user,

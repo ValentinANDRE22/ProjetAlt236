@@ -6,190 +6,226 @@
         <div class="dashboard">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-8">
-                        <h2>Vidéos</h2>
-                        <br>
+                    <div class="col-md-8">
                         <div class="row">
-                            <div class="col-4">
-                                <div class="card" style="width: 18rem; height:85%;">
-                                  {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                                  <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                  <div class="card-body" style="height:100%;">
-                                    <h5 class="card-title">WHAT IS ALT236 ? /// F.A.Q.</h5>
-                                    {# <p class="card-text">New Visible</p> #}
-                                    <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
-                                </div>
-                            </div>
+                            <div class="col-md-3">   <h2>Vidéos</h2></div>
+                            <div class="offset-md-1 col-md-5"><button id="btn-formulaire-add-video" class="btn btn-secondary"> + Ajouter une vidéo</button></div>
                         </div>
-                        <div class="col-4">
+                        <br>
+                        <div id="formulaire-add-video" class="form-group formulaire-add-video">
+                            <h2>Formulaire d'ajout d'une vidéo <button id="btn-close-formulaire-add-video" class="btn btn-secondary"> X </button></h2>
+                            {{ form_start(formVideo) }}
+                            {{ form_widget(formVideo.titre, { attr : { class: 'form-control', placeholder: 'Titre'}})  }}
+                            {{ form_widget(formVideo.description, { attr : { class: 'form-control', placeholder: 'Description'}})  }}
+                            {{ form_widget(formVideo.lienYoutube, { attr : { class: 'form-control', placeholder: 'Lien Youtube'}})  }}
+                            {{ form_widget(formVideo.lienYoutubeFrame, { attr : { class: 'form-control', placeholder: 'Lien Integration'}})  }}
+                            <br>
+                            <div class="row">
+                                <div class="offset-1 col-md-2">
+                                 {{ form_label(formVideo.new) }} 
+                                 {{ form_widget(formVideo.new, { attr : { class: 'form',}})  }}
+                             </div>  
+                             <div class="col-md-2">
+                                 {{ form_label(formVideo.visible) }} 
+                                 {{ form_widget(formVideo.visible, { attr : { class: 'form', }})  }}
+                             </div> 
+                             <div class="col-md-7">
+                                 <button type="submit" class="btn btn-secondary btn-form">Ajouter</button>
+                             </div> 
+                         </div>
+                         <br>
+                         {{ form_end(formVideo) }}
+                     </div>
+
+
+
+
+                     <div class="row">
+                        <div class="col-md-4">
                             <div class="card" style="width: 18rem; height:85%;">
                               {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                              <iframe width="100%" height="195px" src="https://www.youtube.com/embed/nfth6VPXVCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                              <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                               <div class="card-body" style="height:100%;">
-                                <h5 class="card-title">STENDHAL SYNDROME #4 : LE SILENCE DES ETOILES</h5>
+                                <h5 class="card-title card-title-me">WHAT IS ALT236 ? /// F.A.Q.</h5>
                                 {# <p class="card-text">New Visible</p> #}
-                                <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
+                                <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="card" style="width: 18rem; height:85%;">
                           {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                          <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                          <iframe width="100%" height="195px" src="https://www.youtube.com/embed/nfth6VPXVCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                           <div class="card-body" style="height:100%;">
-                            <h5 class="card-title">WHAT IS ALT236 ? /// F.A.Q.</h5>
+                            <h5 class="card-title card-title-me">STENDHAL SYNDROME #4 : LE SILENCE DES ETOILES</h5>
                             {# <p class="card-text">New Visible</p> #}
-                            <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
+                            <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
                         </div>
                     </div>
 
                 </div>
-            </div>
-
-
-               <div class="row">
-                            <div class="col-4">
-                                <div class="card" style="width: 18rem; height:85%;">
-                                  {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                                  <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                  <div class="card-body" style="height:100%;">
-                                    <h5 class="card-title">WHAT IS ALT236 ? /// F.A.Q.</h5>
-                                    {# <p class="card-text">New Visible</p> #}
-                                    <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card" style="width: 18rem; height:85%;">
-                              {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                              <iframe width="100%" height="195px" src="https://www.youtube.com/embed/nfth6VPXVCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                              <div class="card-body" style="height:100%;">
-                                <h5 class="card-title">STENDHAL SYNDROME #4 : LE SILENCE DES ETOILES</h5>
-                                {# <p class="card-text">New Visible</p> #}
-                                <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
-                            </div>
-                        </div>
-
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem; height:85%;">
+                      {# <img class="card-img-top" src="..." alt="Card image cap"> #}
+                      <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                      <div class="card-body" style="height:100%;">
+                        <h5 class="card-title card-title-me">WHAT IS ALT236 ? /// F.A.Q.</h5>
+                        {# <p class="card-text">New Visible</p> #}
+                        <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
                     </div>
-                    <div class="col-4">
-                        <div class="card" style="width: 18rem; height:85%;">
-                          {# <img class="card-img-top" src="..." alt="Card image cap"> #}
-                          <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                          <div class="card-body" style="height:100%;">
-                            <h5 class="card-title">WHAT IS ALT236 ? /// F.A.Q.</h5>
-                            {# <p class="card-text">New Visible</p> #}
-                            <a href="#" class="btn btn-primary">Gestion de la vidéo</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-
-        </br>
-
-            <div class="sources">
-                <!-- NavBar pour le scrollspy -->
-                <nav id="navbar-example2" class="navbar navbar-dark bg-dark">
-                    <a class="navbar-brand" href="#">Musique</a>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#musiquesbas" style="color:rgba(217, 216, 214, 0.94);">Bas de liste</a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- Affichage des sources dans un scrollspy -->
-                <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="musique-scroll">
-                <table class="table table-striped head-source">
-                    <thead>
-                        <tr>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Artiste</th>
-                            <th scope="col">Lien</th>
-                            <th scope="col">Timer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">HOLY MOUNTAINS</th>
-                            <td>Alt236</td>
-                            <td><a href="https://www.youtube.com/watch?v=Jda6MxiSdhk&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-">Écouter</a></td>
-                            <td><span class="badge badge-secondary">00:01</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">TIME TRAVELS</th>
-                            <td>Alt236</td>
-                            <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-                            <td><span class="badge badge-secondary">01:23</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">THE RECORD</th>
-                            <td>Alt236</td>
-                            <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-                            <td><span class="badge badge-secondary">02:53</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">ALL-SEEING EYE</th>
-                            <td>Alt236</td>
-                            <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-                            <td><span class="badge badge-secondary">04:12</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">WE ALONE</th>
-                            <td>Alt236</td>
-                            <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-                            <td><span class="badge badge-secondary">05:57</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div id="musiquesbas">
                 </div>
 
             </div>
-            
         </div>
-    </br>
-
-<button class="btn btn-secondary">Ajouter une musique</button>
 
 
-    </br>
-    <hr>
-
-     <div class="sources">
-                <!-- NavBar pour le scrollspy -->
-                <nav id="navbar-example2" class="navbar navbar-dark bg-dark">
-                    <a class="navbar-brand" href="#">Utilisateur</a>
-               
-                </nav>
-                <!-- Affichage des sources dans un scrollspy -->
-                <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="user-scroll">
-                <table class="table table-striped head-source">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Alt236</td>
-                        </tr>
-                          <tr>
-                            <td>Valentin</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem; height:85%;">
+                  {# <img class="card-img-top" src="..." alt="Card image cap"> #}
+                  <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  <div class="card-body" style="height:100%;">
+                    <h5 class="card-title card-title-me">WHAT IS ALT236 ? /// F.A.Q.</h5>
+                    {# <p class="card-text">New Visible</p> #}
+                    <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
+                </div>
             </div>
-            
         </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem; height:85%;">
+              {# <img class="card-img-top" src="..." alt="Card image cap"> #}
+              <iframe width="100%" height="195px" src="https://www.youtube.com/embed/nfth6VPXVCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              <div class="card-body" style="height:100%;">
+                <h5 class="card-title card-title-me">STENDHAL SYNDROME #4 : LE SILENCE DES ETOILES</h5>
+                {# <p class="card-text">New Visible</p> #}
+                <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem; height:85%;">
+          {# <img class="card-img-top" src="..." alt="Card image cap"> #}
+          <iframe width="100%" height="195px" src="https://www.youtube.com/embed/yLUFS8Yahe4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="card-body" style="height:100%;">
+            <h5 class="card-title card-title-me">WHAT IS ALT236 ? /// F.A.Q.</h5>
+            {# <p class="card-text">New Visible</p> #}
+            <a href="#" class="btn btn-primary btn-miniature">Gestion de la vidéo</a>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+<div class="col-md-4">
 
 </br>
-        <button class="btn btn-secondary">Ajouter un utilisateur</button>
-    </br>
+
+<div class="sources">
+    <!-- NavBar pour le scrollspy -->
+    <nav id="navbar-example2" class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Musique</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#musiquesbas" style="color:rgba(217, 216, 214, 0.94);">Bas de liste</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Affichage des sources dans un scrollspy -->
+    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="musique-scroll">
+        <table class="table table-striped head-source">
+            <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Artiste</th>
+                    <th scope="col">Lien</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">HOLY MOUNTAINS</th>
+                    <td>Alt236</td>
+                    <td><a href="https://www.youtube.com/watch?v=Jda6MxiSdhk&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-">Écouter</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">TIME TRAVELS</th>
+                    <td>Alt236</td>
+                    <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">THE RECORD</th>
+                    <td>Alt236</td>
+                    <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">ALL-SEEING EYE</th>
+                    <td>Alt236</td>
+                    <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">WE ALONE</th>
+                    <td>Alt236</td>
+                    <td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="musiquesbas">
+        </div>
+
+    </div>
+
+</div>
+</br>
+
+<button class="btn btn-secondary" id="btn-formulaire-add-musique"> + Ajouter une musique</button>
+<div id="formulaire-add-musique" class="form-group formulaire-add-musique">
+    <h2>Formulaire d'ajout d'une musique <button id="btn-close-formulaire-add-musique" class="btn btn-secondary"> X </button></h2>
+    {{ form_start(formMusique) }}
+    {{ form_widget(formMusique.titre, { attr : { class: 'form-control', placeholder: 'Titre'}})  }}
+    {{ form_widget(formMusique.artiste, { attr : { class: 'form-control', placeholder: 'Artiste'}})  }}
+    {{ form_widget(formMusique.duree, { attr : { class: 'form-control', placeholder: 'Durée'}})  }}
+    {{ form_widget(formMusique.lien, { attr : { class: 'form-control', placeholder: 'Lien'}})  }}
+    <button type="submit" class="btn btn-secondary btn-form">Ajouter</button><br>
+{{ form_end(formMusique) }}
+</div> 
+
+
+
+</br>
+<hr>
+
+<div class="sources">
+    <!-- NavBar pour le scrollspy -->
+    <nav id="navbar-example2" class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Utilisateur</a>
+
+    </nav>
+    <!-- Affichage des sources dans un scrollspy -->
+    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="user-scroll">
+        <table class="table table-striped head-source">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alt236</td>
+                </tr>
+                <tr>
+                    <td>Valentin</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</br>
+<a class="btn btn-secondary" href="{{ path('register') }}">Ajouter un utilisateur</a>
+</br>
 </div>
 </div>
 </div>

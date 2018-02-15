@@ -3,5 +3,181 @@
 
 {% block body %}
 
-    
-{% endblock %}
+
+	<div class="container-fluid" >
+		<div class="dashboard">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-4">
+						<iframe width="100%" height="315" src="{{ video.lienYoutubeFrame}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						<br>
+						<div id="formulaire-edit-video" class="form-group formulaire-add-video">
+							<!--<h2>Formulaire d'ajout d'une vidéo</h2>-->
+							{{ form_start(formVideo) }}
+							{{ form_widget(formVideo.titre, { attr : { class: 'form-control', placeholder: 'Titre'}})  }}
+							{{ form_widget(formVideo.description, { attr : { class: 'form-control', placeholder: 'Description'}})  }}
+							{{ form_widget(formVideo.lienYoutube, { attr : { class: 'form-control', placeholder: 'Lien Youtube'}})  }}
+							{{ form_widget(formVideo.lienYoutubeFrame, { attr : { class: 'form-control', placeholder: 'Lien Integration'}})  }}
+							<br>
+							<div class="row">
+								<div class="col-md-2">
+									{{ form_label(formVideo.new) }} 
+									{{ form_widget(formVideo.new, { attr : { class: 'form',}})  }}
+								</div>  
+								<div class="col-md-3">
+									{{ form_label(formVideo.visible) }} 
+									{{ form_widget(formVideo.visible, { attr : { class: 'form', }})  }}
+								</div> 
+								<div class="col-md-7">
+									<button type="submit" class="btn btn-secondary btn-form">Modifier</button>
+								</div> 
+							</div>
+							<br>
+							{{ form_end(formVideo) }}
+						</div>
+					</div>
+
+					<div class="col-md-8">
+
+						<div class="sources">
+							<!-- NavBar pour le scrollspy -->
+							<nav id="navbar-example2" class="navbar navbar-dark bg-dark">
+								<a class="navbar-brand" href="#">Sources</a>
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<a class="nav-link" href="#musiques" style="color:rgba(217, 216, 214, 0.94);">Musiques</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#images" style="color:rgba(217, 216, 214, 0.94);">Images</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- Affichage des sources dans un scrollspy -->
+							<div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="source-scroll">
+								<h4 id="musiques">Musiques</h4>
+								<table class="table table-striped head-source">
+									<thead>
+										<tr>
+											<th scope="col">Titre</th>
+											<th scope="col">Artiste</th>
+											<th scope="col">Lien</th>
+											<th scope="col">Timer</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">HOLY MOUNTAINS</th>
+											<td>Alt236</td>
+											<td><a href="https://www.youtube.com/watch?v=Jda6MxiSdhk&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-">Écouter</a></td>
+											<td><span class="badge badge-secondary">00:01</span></td>
+										</tr>
+										<tr>
+											<th scope="row">TIME TRAVELS</th>
+											<td>Alt236</td>
+											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+											<td><span class="badge badge-secondary">01:23</span></td>
+										</tr>
+										<tr>
+											<th scope="row">THE RECORD</th>
+											<td>Alt236</td>
+											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+											<td><span class="badge badge-secondary">02:53</span></td>
+										</tr>
+										<tr>
+											<th scope="row">ALL-SEEING EYE</th>
+											<td>Alt236</td>
+											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+											<td><span class="badge badge-secondary">04:12</span></td>
+										</tr>
+										<tr>
+											<th scope="row">WE ALONE</th>
+											<td>Alt236</td>
+											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
+											<td><span class="badge badge-secondary">05:57</span></td>
+										</tr>
+									</tbody>
+								</table>
+
+								<h4 id="images">Images</h4>
+								<table class="table table-striped head-source">
+									<thead>
+										<tr>
+											<th scope="col">Titre</th>
+											<th scope="col">Artiste</th>
+											<th scope="col">Lien</th>
+											<th scope="col">Timer</th>
+											<th scope="col"></th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for image in video.image.matching(criteriaImage) %}
+											<tr>
+												<th scope="row">{{ image.titre }}</th>
+												<td>{{ image.artiste }}</td>
+												<td><a href="{{ image.lien }}" target="_blank">Voir</a></td>
+												<td><span class="badge badge-secondary">{{ image.timer }}</span></td>
+												<td><a id="btn-suppr-image" data-link="{{ path('Admin_suppr_image', {id : image.id}) }}" class="btn btn-danger btn-suppr-image"><span class="glyphicon glyphicon-remove"></span></a></td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+						<br>	
+						<div id="formulaire-add-image" class="form-group formulaire-add-image">
+							{{ form_start(formImage) }}
+
+							<h2>Formulaire d'ajout d'une image</h2> 
+							<div class="row">
+
+								<div class="col-md-2 col-formulaire-add-image">
+									{{ form_widget(formImage.titre, { attr : { class: 'form-control ', placeholder: 'Titre'}})  }}
+								</div>  
+								<div class="col-md-2 col-formulaire-add-image">
+									{{ form_widget(formImage.artiste, { attr : { class: 'form-control', placeholder: 'Artiste'}})  }}
+								</div>  
+								<div class="col-md-5 col-formulaire-add-image">
+									{{ form_widget(formImage.lien, { attr : { class: 'form-control', placeholder: 'Lien'}})  }}
+								</div>  
+								<div class="col-md-1 col-formulaire-add-image">
+									{{ form_widget(formImage.timer, { attr : { class: 'form-control', placeholder: 'Timer', format: 'ex: 01:34'}})  }}
+								</div> 
+								<div class="col-md-2 col-formulaire-add-image">
+									<button type="submit" class="btn btn-secondary btn-form">Ajouter</button>
+								</div> 
+								<br>
+								
+							</div>
+							{{ form_end(formImage) }}
+							<br>
+							{# 	</div> #}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		{# Modal bootstrap #}
+		<div id="modal-suppr" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Êtes-vous sur de vouloir supprimer ?</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary  link-supp">Confirmer</a>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

@@ -26,6 +26,7 @@ security:
                 username_parameter: login[username]
                 password_parameter: login[password]
                 check_path: login_check
+                
             logout:
                 path: logout
                 target: login
@@ -33,4 +34,4 @@ security:
     access_control:
             # require ROLE_ADMIN for /admin*
             - { path: ^/admin, roles: ROLE_ADMIN }
-            - { path: ^/admin/register, roles: ROLE_SUPER_ADMIN }
+            - { path: ^/register, roles: ROLE_SUPER_ADMIN }

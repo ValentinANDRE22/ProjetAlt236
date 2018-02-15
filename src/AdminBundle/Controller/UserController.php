@@ -25,13 +25,14 @@ class UserController extends Controller{
         $array = array();
         $error = "";
         
+        //
         $form = $this->createForm(LoginType::class, $array, array(
             'action' => $this->generateUrl('login_check')
         ));
         $helper = $this->get('security.authentication_utils');
         $error = $helper->getLastAuthenticationError();
 
-        dump($error);
+        //dump($error);
  
         if($error instanceof BadCredentialsException){
             $error = "Veuillez vérifier vos identifiants de connexion.";  

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('style/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/glyphicons.css') }}">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     {% block stylesheets %}
 
@@ -43,7 +44,8 @@
 </form> #}
 <div>
     {% if app.user.username is defined %}
-    <span class="glyphicon glyphicon-user badge badge-success" aria-hidden="true" style="text-transform: capitalize; padding: 1em;"> {{ app.user.username}}</span>
+  {#   <span class="glyphicon glyphicon-user badge badge-outline-success" aria-hidden="true" style="text-transform: capitalize; padding: 1em;"> {{ app.user.username}}</span> #}
+    <a href="{{ path('logout') }}" class="btn btn-outline-warning my-2 my-sm-0 glyphicon glyphicon-off"> {{ app.user.username}} </a>
 {% else %}
     <a href="{{ path('login') }}" class="btn btn-outline-success my-2 my-sm-0">Connexion</a>
 {% endif %}
