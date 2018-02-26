@@ -1,6 +1,9 @@
 
 $(document).ready(function() { 
-		console.log("ok c'est load");
+    
+     $('.select2').select2();
+     
+	
 
 	// --------------------- page /admin
 	//On cache le formulaire d'ajout de video
@@ -43,12 +46,13 @@ $(document).ready(function() {
 	});
 
 	//Modale suppression image
-	$("#btn-suppr-image").click(function(e) {
+	$(".btn-suppr-image").click(function(e) {
+            
 		e.preventDefault();
 		var link = $(this).attr('data-link');
 		$('.link-supp').attr('href', link);
 		$("#modal-suppr").modal("show");
-	})
+	});
 
 
 

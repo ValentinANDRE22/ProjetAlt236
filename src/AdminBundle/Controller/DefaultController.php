@@ -8,6 +8,8 @@ use AdminBundle\Entity\Video;
 use AdminBundle\Form\VideoType;
 use AdminBundle\Entity\Musique;
 use AdminBundle\Form\MusiqueType;
+use AdminBundle\Entity\User;
+use Doctrine\Common\Collections\Criteria;
 
 
 class DefaultController extends Controller
@@ -16,7 +18,22 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
          $error = "";
+
+          $em = $this->getDoctrine()->getManager();
+
+          // Récupération des videos
+          $listeVideos = $em->getRepository(Video::class)->findBy(
+                        array('isAlive' => null), array('dateCrea' => 'desc'), $limit = 6,  null
+                  );
+
+         //Récupération des musiques
+          $listeMusiques = $em->getRepository(Musique::class)->findBy(
+                        array('isAlive' => null), array('dateCrea' => 'asc'), null,  null
+                  );
          
+         //Récupération des utilisateurs 
+          $listeUsers = $em->getRepository(User::class)->findAll();
+
         // Création du formulaire des vidéos 
         $video = new Video();
         $formVideo = $this->createForm(VideoType::class, $video);
@@ -65,6 +82,9 @@ class DefaultController extends Controller
         
          
         return $this->render('AdminBundle:Default:index.html.twig', array(
+            'listeVideos' => $listeVideos,
+            'listeMusiques' => $listeMusiques,
+            'listeUsers' => $listeUsers,
             'formVideo' => $formVideo->createView(),
             'formMusique' => $formMusique->createView(),
         ));

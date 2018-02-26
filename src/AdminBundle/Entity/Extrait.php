@@ -38,9 +38,9 @@ class Extrait
     /**
      * @var string
      *
-     * @ORM\Column(name="duree", type="string", length=8)
+     * @ORM\Column(name="timer", type="string", length=8)
      */
-    private $duree;
+    private $timer;
 
     /**
      * @var string
@@ -136,27 +136,27 @@ class Extrait
     }
 
     /**
-     * Set duree
+     * Set timer
      *
-     * @param string $duree
+     * @param string $timer
      *
      * @return Extrait
      */
-    public function setDuree($duree)
+    public function setTimer($timer)
     {
-        $this->duree = $duree;
+        $this->timer = $timer;
 
         return $this;
     }
 
     /**
-     * Get duree
+     * Get timer
      *
      * @return string
      */
-    public function getDuree()
+    public function getTimer()
     {
-        return $this->duree;
+        return $this->timer;
     }
 
     /**

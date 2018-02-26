@@ -67,6 +67,17 @@ class Video
      * @ORM\OneToMany(targetEntity="Image", mappedBy="video")
      */
     private $image;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Extrait", mappedBy="video")
+     */
+    private $extrait;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="LiaisonMusique", mappedBy="video")
+     */
+    private $liaisonMusique;
+
 
     /**
      * @var \DateTime
@@ -355,5 +366,73 @@ class Video
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add liaisonMusique
+     *
+     * @param \AdminBundle\Entity\LiaisonMusique $liaisonMusique
+     *
+     * @return Video
+     */
+    public function addLiaisonMusique(\AdminBundle\Entity\LiaisonMusique $liaisonMusique)
+    {
+        $this->liaisonMusique[] = $liaisonMusique;
+
+        return $this;
+    }
+
+    /**
+     * Remove liaisonMusique
+     *
+     * @param \AdminBundle\Entity\LiaisonMusique $liaisonMusique
+     */
+    public function removeLiaisonMusique(\AdminBundle\Entity\LiaisonMusique $liaisonMusique)
+    {
+        $this->liaisonMusique->removeElement($liaisonMusique);
+    }
+
+    /**
+     * Get liaisonMusique
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLiaisonMusique()
+    {
+        return $this->liaisonMusique;
+    }
+
+    /**
+     * Add extrait
+     *
+     * @param \AdminBundle\Entity\Extrait $extrait
+     *
+     * @return Video
+     */
+    public function addExtrait(\AdminBundle\Entity\Extrait $extrait)
+    {
+        $this->extrait[] = $extrait;
+
+        return $this;
+    }
+
+    /**
+     * Remove extrait
+     *
+     * @param \AdminBundle\Entity\Extrait $extrait
+     */
+    public function removeExtrait(\AdminBundle\Entity\Extrait $extrait)
+    {
+        $this->extrait->removeElement($extrait);
+    }
+
+    /**
+     * Get extrait
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExtrait()
+    {
+        return $this->extrait;
     }
 }

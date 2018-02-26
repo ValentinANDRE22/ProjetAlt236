@@ -50,12 +50,12 @@ body{
 }
 
 .sources{
-		border-right: 5px solid #ef0cbf;
+		/*border-right: 5px solid #ef0cbf;
 		   border-radius: 3px;
 
 		   box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
 -moz-box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
--webkit-box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);
+-webkit-box-shadow: 0px 0px 8px 3px rgba(119, 119, 119, 0.35);*/
 }
 
 .source-scroll{
@@ -131,6 +131,24 @@ input[type="text"] {
   border-bottom-right-radius: 0;
 }
 
+span.select2-selection.select2-selection--single {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 100%;
+}
+
+.select2-container{
+    height: 100%;
+}
+.select2-container--default .select2-selection--single {
+    border-color: #cfd4da !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-selection--single .select2-selection__arrow {
+   padding-top: 4px;
+}
+
 input[type="password"] {
   margin-bottom: 20px;
   border-top-left-radius: 0;
@@ -150,10 +168,10 @@ input[type="password"] {
 
 .dashboard{
     background-color: rgba(227, 227, 227, 0.94);
-    border-left: 5px solid #f25e23;
+    /* border-left: 5px solid #f25e23;
 	    border-radius: 3px;
-	        padding: 1em;
-    margin: .5em 0;
+	        padding: 1em;*/
+    padding: 10px;
 }
 
 .card-title-me {
@@ -183,3 +201,16 @@ input[type="password"] {
 	padding-right: 0;
 
 }
+
+.col-formulaire-add-musique {
+
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.col-formulaire-add-extrait {
+
+	padding-left: 0;
+	padding-right: 0;
+}
+

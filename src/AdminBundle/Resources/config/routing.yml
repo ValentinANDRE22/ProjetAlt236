@@ -17,3 +17,19 @@ Admin_musique_board:
 Admin_suppr_image:
     path:   /image/remove/{id}
     defaults: { _controller: "AdminBundle:Video:deleteImage" }
+    
+Admin_suppr_extrait:
+    path:   /extrait/remove/{id}
+    defaults: { _controller: "AdminBundle:Video:deleteExtrait" }
+    
+Admin_suppr_liaisonMusique:
+    path:   /liaisonmusique/remove/{id}
+    defaults: { _controller: "AdminBundle:Video:deleteLiaisonMusique" }
+    
+Admin_suppr_video:
+    path:   /video/remove/{id}
+    defaults: { _controller: "AdminBundle:Video:deleteVideo" }
+    
+Admin_suppr_musique:
+    path:   /musique/remove/{id}
+    defaults: { _controller: "AdminBundle:Musique:deleteMusique" }

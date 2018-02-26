@@ -48,6 +48,11 @@ class Musique
      * @ORM\Column(name="lien", type="string", length=255)
      */
     private $lien;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="LiaisonMusique", mappedBy="musique")
+     */
+    private $liaisonMusique;
 
     /**
      * @var \DateTime
@@ -248,5 +253,45 @@ class Musique
     {
         return $this->isAlive;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->liaisonMusique = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add liaisonMusique
+     *
+     * @param \AdminBundle\Entity\LiaisonMusique $liaisonMusique
+     *
+     * @return Musique
+     */
+    public function addLiaisonMusique(\AdminBundle\Entity\LiaisonMusique $liaisonMusique)
+    {
+        $this->liaisonMusique[] = $liaisonMusique;
+
+        return $this;
+    }
+
+    /**
+     * Remove liaisonMusique
+     *
+     * @param \AdminBundle\Entity\LiaisonMusique $liaisonMusique
+     */
+    public function removeLiaisonMusique(\AdminBundle\Entity\LiaisonMusique $liaisonMusique)
+    {
+        $this->liaisonMusique->removeElement($liaisonMusique);
+    }
+
+    /**
+     * Get liaisonMusique
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLiaisonMusique()
+    {
+        return $this->liaisonMusique;
+    }
+}

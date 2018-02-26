@@ -14,6 +14,10 @@ use AdminBundle\Entity\Video;
 use AdminBundle\Form\VideoType;
 use AdminBundle\Entity\Image;
 use AdminBundle\Form\ImageType;
+use AdminBundle\Entity\Extrait;
+use AdminBundle\Form\ExtraitType;
+use AdminBundle\Entity\LiaisonMusique;
+use AdminBundle\Form\LiaisonMusiqueType;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -28,9 +32,8 @@ class VideoController extends Controller{
          // Initialisation des variables
         $error = "";
         
-        //Récupération des images
-//        $tableImages = $video->getImage()->toArray();
-        $criteriaImage = Criteria::create()
+    
+        $criteria = Criteria::create()
         ->where(Criteria::expr()->eq("isAlive", null))
         ->orderBy(array("timer" => Criteria::ASC))
         ;
@@ -78,12 +81,56 @@ class VideoController extends Controller{
             }
         }
         
+        //création du formulaire d'ajout d'extrait
+        $extrait = new Extrait();
+        $formExtrait = $this->createForm(ExtraitType::class, $extrait);
+        $formExtrait->handleRequest($request);
+        if($formExtrait->isSubmitted()){
+            if ($formExtrait->isValid()) {
+                
+                $extrait->setVideo($video);
+                $extrait->setDateCrea(new \DateTime());
+
+                try {
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($extrait);
+                    $em->flush();
+                    return  $this->redirectToRoute('Admin_video_board', array('id' => $video->getId()));
+                } catch (Exception $ex) {
+                    $error = $ex;
+                    dump($error);
+                }
+            }
+        }
+        
+          //création du formulaire d'ajout de musique
+        $liaison = new LiaisonMusique();
+        $formLiaison = $this->createForm(LiaisonMusiqueType::class, $liaison);
+        $formLiaison->handleRequest($request);
+        if($formLiaison->isSubmitted()){
+            if ($formLiaison->isValid()) {
+                
+                $liaison->setVideo($video);
+
+                try {
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($liaison);
+                    $em->flush();
+                    return  $this->redirectToRoute('Admin_video_board', array('id' => $video->getId()));
+                } catch (Exception $ex) {
+                    $error = $ex;
+                    dump($error);
+                }
+            }
+        }
         
         return $this->render('AdminBundle:Default:videoBoard.html.twig', array(
             'video' => $video,
-            'criteriaImage' => $criteriaImage,
+            'criteria' => $criteria,
             'formVideo' => $formVideo->createView(),
             'formImage' => $formImage->createView(),
+            'formExtrait' => $formExtrait->createView(),
+            'formMusique' => $formLiaison->createView(),
         ));
     }
     
@@ -97,4 +144,39 @@ class VideoController extends Controller{
         
     }
     
+    public function deleteExtraitAction(Extrait $extrait){
+        $em = $this->getDoctrine()->getManager();
+        
+        $extrait->setIsAlive(new \DateTime());
+        $em->flush();
+        
+        return $this->redirectToRoute('Admin_video_board', array('id' => $extrait->getVideo()->getId()));
+        
+    }
+    
+    public function deleteLiaisonMusiqueAction(LiaisonMusique $liaison){
+        $em = $this->getDoctrine()->getManager();
+        $id = $liaison->getVideo()->getId();
+     
+        $em->remove($liaison);
+        $em->flush();
+        
+        return $this->redirectToRoute('Admin_video_board', array('id' => $id));
+        
+    }
+    
+    public function deleteVideoAction(Video $video){
+        $em = $this->getDoctrine()->getManager();
+        $mesLiaison = $em->getRepository(LiaisonMusique::class)->findBy(['video' => $video->getId()]);
+        foreach($mesLiaison as $liaison){
+            $liaison->getId();
+            $em->remove($liaison);
+        }
+        
+        $video->setIsAlive(new \DateTime());
+        $em->flush();
+        
+        return $this->redirectToRoute('Admin_index');
+        
+    }
 }

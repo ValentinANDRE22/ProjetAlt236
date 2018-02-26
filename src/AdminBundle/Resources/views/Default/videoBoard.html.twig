@@ -3,14 +3,14 @@
 
 {% block body %}
 
-
-	<div class="container-fluid" >
 		<div class="dashboard">
 			<div class="container-fluid">
+                            <br>
 				<div class="row">
 					<div class="col-md-4">
 						<iframe width="100%" height="315" src="{{ video.lienYoutubeFrame}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						<br>
+                                                <h2>Modification de la vidéo</h2>
 						<div id="formulaire-edit-video" class="form-group formulaire-add-video">
 							<!--<h2>Formulaire d'ajout d'une vidéo</h2>-->
 							{{ form_start(formVideo) }}
@@ -32,8 +32,9 @@
 									<button type="submit" class="btn btn-secondary btn-form">Modifier</button>
 								</div> 
 							</div>
-							<br>
+                                                                <hr>
 							{{ form_end(formVideo) }}
+                                                        <a data-link="{{ path('Admin_suppr_video', {id : video.id}) }}" class="btn btn-warning btn-suppr-image" style="width: 100%; "><span class="glyphicon glyphicon-trash"></span> Supprimer la video</a>
 						</div>
 					</div>
 
@@ -50,10 +51,15 @@
 									<li class="nav-item">
 										<a class="nav-link" href="#images" style="color:rgba(217, 216, 214, 0.94);">Images</a>
 									</li>
+                                                                        <li class="nav-item">
+										<a class="nav-link" href="#extraits" style="color:rgba(217, 216, 214, 0.94);">Extraits</a>
+									</li>
 								</ul>
 							</nav>
 							<!-- Affichage des sources dans un scrollspy -->
 							<div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="source-scroll">
+                                                            {% if video.liaisonMusique is not empty %}              
+
 								<h4 id="musiques">Musiques</h4>
 								<table class="table table-striped head-source">
 									<thead>
@@ -62,42 +68,25 @@
 											<th scope="col">Artiste</th>
 											<th scope="col">Lien</th>
 											<th scope="col">Timer</th>
+                                                                                        <th></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">HOLY MOUNTAINS</th>
-											<td>Alt236</td>
-											<td><a href="https://www.youtube.com/watch?v=Jda6MxiSdhk&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-">Écouter</a></td>
-											<td><span class="badge badge-secondary">00:01</span></td>
-										</tr>
-										<tr>
-											<th scope="row">TIME TRAVELS</th>
-											<td>Alt236</td>
-											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-											<td><span class="badge badge-secondary">01:23</span></td>
-										</tr>
-										<tr>
-											<th scope="row">THE RECORD</th>
-											<td>Alt236</td>
-											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-											<td><span class="badge badge-secondary">02:53</span></td>
-										</tr>
-										<tr>
-											<th scope="row">ALL-SEEING EYE</th>
-											<td>Alt236</td>
-											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-											<td><span class="badge badge-secondary">04:12</span></td>
-										</tr>
-										<tr>
-											<th scope="row">WE ALONE</th>
-											<td>Alt236</td>
-											<td><a href="https://www.youtube.com/watch?v=2Jr0RPyqOgw&list=PLx7YW4P5M1C87qCzChC-oFsSpUubdmxg-&index=2">Écouter</a></td>
-											<td><span class="badge badge-secondary">05:57</span></td>
-										</tr>
+                                                                            {% for mus in video.liaisonMusique %}
+                                                                                <tr>
+											<th scope="row">{{ mus.musique.titre }}</th>
+											<td>{{ mus.musique.artiste }}</td>
+											<td><a href="{{ mus.musique.lien }}" target="_blank">Écouter</a></td>
+											<td><span class="badge badge-secondary">{{ mus.timer }}</span></td>
+                                                                                        <td><a href="{{ path('Admin_musique_board', {'id': mus.musique.id}) }}" class="glyphicon glyphicon-eye-open"></a></td>
+                                                                                        <td><a data-link="{{ path('Admin_suppr_liaisonMusique', {id : mus.id}) }}" class="btn btn-warning btn-suppr-image"><span class="glyphicon glyphicon-remove"></span></a></td>
+											</tr>
+                                                                            {% endfor %}
 									</tbody>
 								</table>
-
+                                                                            {% endif %}
+{% if video.image.matching(criteria) is not empty %}
+                                                           
 								<h4 id="images">Images</h4>
 								<table class="table table-striped head-source">
 									<thead>
@@ -110,17 +99,44 @@
 										</tr>
 									</thead>
 									<tbody>
-										{% for image in video.image.matching(criteriaImage) %}
+										{% for image in video.image.matching(criteria) %}
 											<tr>
 												<th scope="row">{{ image.titre }}</th>
 												<td>{{ image.artiste }}</td>
 												<td><a href="{{ image.lien }}" target="_blank">Voir</a></td>
 												<td><span class="badge badge-secondary">{{ image.timer }}</span></td>
-												<td><a id="btn-suppr-image" data-link="{{ path('Admin_suppr_image', {id : image.id}) }}" class="btn btn-danger btn-suppr-image"><span class="glyphicon glyphicon-remove"></span></a></td>
+												<td><a data-link="{{ path('Admin_suppr_image', {id : image.id}) }}" class="btn btn-warning btn-suppr-image"><span class="glyphicon glyphicon-remove"></span></a></td>
 											</tr>
 										{% endfor %}
 									</tbody>
 								</table>
+                                                      {% endif %}
+                                                      {% if video.extrait.matching(criteria) is not empty %}
+                                                                        
+                                                                <h4 id="extraits">Extraits</h4>
+								<table class="table table-striped head-source">
+									<thead>
+										<tr>
+											<th scope="col">Titre</th>
+											<th scope="col">Auteur</th>
+											<th scope="col">Lien</th>
+											<th scope="col">Timer</th>
+											<th scope="col"></th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for extrait in video.extrait.matching(criteria) %}
+											<tr>
+												<th scope="row">{{ extrait.titre }}</th>
+												<td>{{ extrait.auteur }}</td>
+												<td><a href="{{ extrait.lien }}" target="_blank">Voir</a></td>
+												<td><span class="badge badge-secondary">{{ extrait.timer }}</span></td>
+												<td><a data-link="{{ path('Admin_suppr_extrait', {id : extrait.id}) }}" class="btn btn-warning btn-suppr-image"><span class="glyphicon glyphicon-remove"></span></a></td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+                                                                        {% endif %}
 
 							</div>
 
@@ -129,7 +145,7 @@
 						<div id="formulaire-add-image" class="form-group formulaire-add-image">
 							{{ form_start(formImage) }}
 
-							<h2>Formulaire d'ajout d'une image</h2> 
+							<h2>Ajout d'une image</h2> 
 							<div class="row">
 
 								<div class="col-md-2 col-formulaire-add-image">
@@ -151,10 +167,56 @@
 								
 							</div>
 							{{ form_end(formImage) }}
-							<br>
-							{# 	</div> #}
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    <div id="formulaire-add-extrait" class="form-group formulaire-add-extrait">
+							<h2>Ajout d'un extrait</h2> 
+                                                        {{ form_start(formExtrait) }}
+							<div class="row">
+                                                            
+                                                            <div class="col-md-2 col-formulaire-add-extrait">
+									{{ form_widget(formExtrait.titre, { attr : { class: 'form-control ', placeholder: 'Titre'}})  }}
+								</div>  
+								<div class="col-md-2 col-formulaire-add-extrait">
+									{{ form_widget(formExtrait.auteur, { attr : { class: 'form-control', placeholder: 'Auteur'}})  }}
+								</div>  
+								<div class="col-md-5 col-formulaire-add-extrait">
+									{{ form_widget(formExtrait.lien, { attr : { class: 'form-control', placeholder: 'Lien'}})  }}
+								</div>  
+								<div class="col-md-1 col-formulaire-add-extrait">
+									{{ form_widget(formExtrait.timer, { attr : { class: 'form-control', placeholder: 'Timer', format: 'ex: 01:34'}})  }}
+								</div> 
+								<div class="col-md-2 col-formulaire-add-extrait">
+									<button type="submit" class="btn btn-secondary btn-form">Ajouter</button>
+								</div> 
+								<br>
 
-						</div>
+							</div>
+							{{ form_end(formExtrait) }}
+                                                    </div>
+                                                    
+						
+                                                    <div id="formulaire-add" class="form-group formulaire-add-musique">
+							<h2>Ajout d'une musique</h2> 
+                                                        {{ form_start(formMusique) }}
+							<div class="row">
+
+								<div class="col-md-4 col-formulaire-add-musique">
+									{{ form_widget(formMusique.musique, { attr : { class: 'form-control select2', placeholder: 'Titre'}})  }}
+								</div>
+								<div class="col-md-2 col-formulaire-add-musique">
+									{{ form_widget(formMusique.timer, { attr : { class: 'form-control', placeholder: 'Timer', format: 'ex: 01:34'}})  }}
+								</div> 
+								<div class="col-md-2 col-formulaire-add-musique">
+									<button type="submit" class="btn btn-secondary btn-form">Ajouter</button>
+								</div> 
+								<br>
+								
+							</div>
+							{{ form_end(formMusique) }}
+                                                    </div>	
 					</div>
 				</div>
 			</div>
@@ -162,22 +224,5 @@
 
 
 
-		{# Modal bootstrap #}
-		<div id="modal-suppr" class="modal fade">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Êtes-vous sur de vouloir supprimer ?</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-footer">
-						<a class="btn btn-primary  link-supp">Confirmer</a>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-					</div>
-				</div>
-			</div>
-		</div>
 
 	{% endblock %}
